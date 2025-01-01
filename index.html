@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css?<?php echo(time());?>">
+    <link rel="stylesheet" href="/css/inputs.scss?<?php echo(time());?>">
+    <link rel="shortcut icon" href="/images/search.png" type="image/x-icon">
+    <title>StuffSearch</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <meta property="og:title" content="StuffSearch">
+    <meta property="og:description" content="Search for anything on several Search engines">
+    <meta property="og:image" content="/images/search.png">
+    <meta name="theme-color" content="#ADD8E6">
+    <script>
+        function loadDefaultSearchEngine() {
+            const savedEngine = localStorage.getItem("defaultSearchEngine") || "brave"; // Standard: Brave
+            document.getElementById("searchEngineSelect").value = savedEngine;
+            updateSearchFormAction(savedEngine);
+
+            function updateSearchFormAction(engine) {
+            const searchForm = document.getElementById("searchForm");
+            const actionUrls = {
+                google: "https://www.google.com/search",
+                bing: "https://www.bing.com/search",
+                duckduckgo: "https://duckduckgo.com",
+                ecosia: "https://www.ecosia.org/search",
+                yahoo: "https://search.yahoo.com/search",
+                brave: "https://search.brave.com/search", 
+                startpage: "https://startpage.com/search",
+                qwant: "https://www.qwant.com",
+            };
+            searchForm.action = actionUrls[engine];
+        }
+
+             function onEngineChange() {
+            const selectedEngine = document.getElementById("searchEngineSelect").value;
+            updateSearchFormAction(selectedEngine);
+        }
+
+      
+        window.addEventListener("DOMContentLoaded", loadDefaultSearchEngine);
+}
+        const searchEngines = {
+            "brave": "https://search.brave.com/search",
+            "google": "https://www.google.com/search",
+            "bing": "https://www.bing.com/search",
+            "duckduckgo": "https://duckduckgo.com",
+            "ecosia": "https://www.ecosia.org/search",
+            "yahoo": "https://search.yahoo.com/search"
+        };
+
+        document.addEventListener("visibilitychange", () => {
+            document.title = document.hidden ? "search.stuffmaker.org" : "StuffSearch";
+        });
+
+        function getSearchQuery() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                search: params.get('search') || '',
+                engine: params.get('engine') || 'brave'
+            };
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const { search, engine } = getSearchQuery();
+            const input = document.querySelector('.input');
+            const select = document.querySelector('#search-engine-select');
+
+            if (search) input.value = search;
+            if (engine) select.value = engine;
+
+            updateSearchAction();
+        });
+
+        function copyShareLink() {
+            const input = document.querySelector('.input');
+            const select = document.querySelector('#search-engine-select');
+            const searchQuery = encodeURIComponent(input.value.trim());
+            const selectedEngine = select.value;
+
+            if (searchQuery) {
+                const shareLink = `https://search.stuffmaker.org?search=${searchQuery}&engine=${selectedEngine}`;
+                navigator.clipboard.writeText(shareLink).then(() => {
+                    alert("Link copied to clipboard. You can now paste to share.");
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    alert("Failed to copy link.");
+                });
+            } else {
+                alert("Please enter a search query before sharing.");
+            }
+        }
+
+        function updateSearchAction() {
+            const form = document.querySelector('#Search');
+            const select = document.querySelector('#search-engine-select');
+            const engineUrl = searchEngines[select.value];
+            form.action = engineUrl;
+        }
+        
+        window.addEventListener("DOMContentLoaded", loadDefaultSearchEngine);
+    </script>
+</head>
+<body>
+    <div class="content">
+<div class="nav-links-index">
+    <h1 id="txt">Stuff Search V2</h1>
+
+    <form id="Search" action="https://search.brave.com/search" method="get" target="_blank" onsubmit="updateSearchAction()">
+        <label for="search-engine-select" style="font-family: 'Arial Black';">Choose Search Engine:</label>
+        <select id="search-engine-select" name="engine" onchange="updateSearchAction()">
+            <option value="brave" selected>Brave Search</option>
+            <option value="google">Google Search</option>
+            <option value="bing">Bing Search</option>
+            <option value="duckduckgo">DuckDuckGo</option>
+            <option value="ecosia">Ecosia Search</option>
+            <option value="yahoo">Yahoo! Search</option>
+        </select>
+        <br><br>
+        <input type="text" class="input" name="q" placeholder="Enter your search query">
+        <input type="submit" class="button_search" value="Search">
+        <button type="button" class="button_share" onclick="copyShareLink()">🔗</button>
+    </form>
+
+    <footer>
+        <br>
+        <a href="/about">
+            <button class="button_abt">About</button>
+        </a>
+        <br>
+        <span> <a href="https://url.stuffmaker.org?url=https://discord.fish/stuffsearch" target="_blank">We want your feedback</a> </span>
+    </footer>
+</div>
+</div>
+</body>
+</html>
