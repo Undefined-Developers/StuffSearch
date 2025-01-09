@@ -1,0 +1,17 @@
+{
+
+    "description": "Wyszukaj wszystko w kilku wyszukiwarkach",
+    "query_placeholder": "Wpisz wyszukiwane hasło",
+    "feedback_footer_txt": "<a href='https://discord.fish/stuffsearch' target='_blank'>Czekamy na Twoją opinię</a>",
+    "search_engine_label": "Wybierz wyszukiwarkę:",
+    "search_button" : "Szukaj",
+
+    
+    "abt_title": "O Stuff Search V2.1",
+    "about_desc" : "Po prostu kolejna rzecz autorstwa <a href='https://stuffmaker.org' target='_blank'>Mr Stuffmaker</a><br>Zrobione dla Windows Forest Collab ",
+    "about_translator_button" : "Nasi tłumacze",
+
+    
+    "the end?": "for now? (no need to translate since its a comment)"
+
+}

@@ -21,14 +21,68 @@
 					document.title = originalTitle;
 				}
 			});
+
+function getBrowserLanguage() {
+    const lang = navigator.language || navigator.userLanguage; 
+    return lang.slice(0, 2);
+}
+
+async function loadLocalization(lang) {
+    const localizationPath = `/localizations/${lang}.json`;
+
+    try {
+        const response = await fetch(localizationPath);
+
+        if (!response.ok) {
+            console.warn(`Localization for language '${lang}' not found, response: ${response.status}`);
+            return null; 
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error(`Error loading localization file for language '${lang}':`, error);
+        return null;
+    }
+}
+
+function applyTranslations(data) {
+    if (!data) {
+        console.warn("No localization data available.");
+        return;
+    }
+
+    Object.keys(data).forEach((key) => {
+        const element = document.getElementById(key);
+        if (element) {
+            if (data[key].includes('<') && data[key].includes('>')) {
+                element.innerHTML = data[key]; 
+            } else {
+                element.textContent = data[key]; 
+            }
+        } else {
+            console.warn(`Element with ID '${key}' not found.`);
+        }
+    });
+}
+
+(async function () {
+    const browserLang = getBrowserLanguage(); // Hole Browsersprache
+    const localizationData = await loadLocalization(browserLang); // Lade die Sprachdatei
+
+    if (localizationData) {
+        applyTranslations(localizationData); // Wende Übersetzungen an
+    } else {
+        console.warn(`Falling back to default content for language '${browserLang}'.`);
+    }
+})();
 		</script>
 	</head>
 
 	<body>
         <div class="content">
         <div class="nav-links-index">
-		<h1 id="txt">About Stuff Search V1</h1>
-            <span>
+		<h1 id="abt_title">About Stuff Search</h1>
+            <span id="about_desc">
                Basically just another thing by <a href="https://stuffmaker.org" target="_blank">Mr Stuffmaker</a><br>Made for the Windows Forest Collab 
             </span>
 		
@@ -44,10 +98,37 @@
                 <button class="button_footer">
                     Info
                 </button>
+                <br>
+                <a><!-- href="" target="_blank"-->
+                    <button class="button_footer" id="about_translator_button" title="Soon">
+                        Translators
+                    </button>
                 </a>
                 <br>
                 <span> <a href="https://info-search.stuffmaker.org#ed-462532860" target="_blank">Privacy Policy</a> </span>
+                <br>
+                <p><span id="version"><Loading class="loading..."></Loading></span></p>
+                <script>
+                    async function loadVersion() {
+                        try {
+                            const response = await fetch('data.json');
+                            if (!response.ok) {
+                                throw new Error(`HTTP-Error: ${response.status}`);
+                            }
+            
+                            const data = await response.json();
+
+                            document.getElementById('version').textContent = data.version;
+                        } catch (error) {
+                            console.error('Fehler beim Laden der Version:', error);
+                            document.getElementById('version').textContent = 'Could not load data.version';
+                        }
+                    }
+            
+                    loadVersion();
+                </script>
         </footer>
+        <script src="language.js";></script>
 
        <div class="light-button">
             <button class="bt">

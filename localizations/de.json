@@ -1,0 +1,16 @@
+{
+    "description": "Suche alles mit verschiedenen Suchmaschinen",
+    "query_placeholder": "Gib deine Suche ein",
+    "feedback_footer_txt": "<a href='https://discord.fish/stuffsearch' target='_blank'>Wir brauchen dein Feedback</a>",
+    "search_engine_label": "Wähle eine Suchmaschine:",
+    "search_button" : "Suche",
+
+
+
+    "abt_title": "Über Stuff Search V2.1",
+    "about_desc": " Irgendein weiteres Projekt von <a href='https://stuffmaker.org' target='_blank'>Mr Stuffmaker</a><br>Gemacht für die bald kommende Windows Forest Collab",
+    "about_translator_button" : "Unsere Übersetzer",
+
+    
+        "the end?": "for now? (no need to translate since its a comment)"
+}

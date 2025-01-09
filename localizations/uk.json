@@ -1,0 +1,17 @@
+{
+
+    "description": "Шукайте що завгодно відразу в багатьох пошукових системах",
+    "query_placeholder": "Введіть пошуковий запит",
+    "feedback_footer_txt": "<a href='https://discord.fish/stuffsearch' target='_blank'>Нам потрібен ваш зворотній зв'язок</a>",
+    "search_engine_label": "Виберіть пошукову систему:",
+    "search_button" : "Пошук",
+
+    
+    "abt_title": "Про StuffSearch",
+    "version": "Версія",
+    "about_desc" : " Ще одна річ від <a href='https://stuffmaker.org' target='_blank'>Mr Stuffmaker</a><br>Зроблено для Windows Forest Collab ",
+    "about_translator_button" : "Перекладачі",
+
+    "the end?": "for now? (no need to translate since its a comment)"
+
+}
