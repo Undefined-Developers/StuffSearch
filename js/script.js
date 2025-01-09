@@ -1,5 +1,5 @@
 function loadDefaultSearchEngine() {
-    const savedEngine = localStorage.getItem("defaultSearchEngine") || "brave"; // Standard: Brave
+    const savedEngine = localStorage.getItem("defaultSearchEngine") || "brave"; 
     document.getElementById("searchEngineSelect").value = savedEngine;
     updateSearchFormAction(savedEngine);
 
@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (engine) select.value = engine;
 
     updateSearchAction();
-   // redirectToSearchEngine(); 
+    redirectToSearchEngine(); 
 });
 
 function copyShareLink() {
