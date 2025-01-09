@@ -46,7 +46,7 @@ function getSearchQuery() {
     };
 }
 
-/*function redirectToSearchEngine() {
+function redirectToSearchEngine() {
     const { search, engine, go } = getSearchQuery();
     if (go === 'true' && search) {
         const engineUrl = searchEngines[engine];
@@ -54,7 +54,7 @@ function getSearchQuery() {
         window.location.href = searchUrl;
     }
 }
-*/
+
 window.addEventListener('DOMContentLoaded', () => {
     const { search, engine } = getSearchQuery();
     const input = document.querySelector('.input');
