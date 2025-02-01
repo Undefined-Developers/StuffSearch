@@ -1,4 +1,4 @@
-# StuffSearch
+# [StuffSearch](https://search.stuffmaker.org)
  Search anything with several Search Engines
 
  # Features
