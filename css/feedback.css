@@ -1,0 +1,49 @@
+ 
+ /*   form {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 5px;
+  
+      }
+      input, textarea, button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #0051ad;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #008006;
+      }
+      .star-rating {
+        direction: rtl;
+        display: inline-block;
+      }
+      .star-rating input {
+        display: none;
+      }
+      .star-rating label {
+        font-size: 30px;
+        color: #ccc;
+        cursor: pointer;
+      }
+      .star-rating input:checked ~ label {
+        color: #ff9900;
+      }
+      .star-rating input:checked + label {
+        color: #ff9900;
+      }
+      .star-rating input:checked ~ input + label {
+        color: #ff9900;
+      }
+      .star-rating input:focus + label {
+        outline: none;
+      }*/
+
+

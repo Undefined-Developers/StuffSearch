@@ -1,32 +1,15 @@
-const WEBHOOK_URL_SOURCE = "/data/webhook.php";
-  
 const feedbackForm = document.getElementById('feedbackForm');
 const responseMessage = document.getElementById('responseMessage');
 
-async function getWebhookUrl() {
-  try {
-    const response = await fetch(WEBHOOK_URL_SOURCE); // Direkte Anfrage ohne Proxy
-    if (!response.ok) {
-      throw new Error(`Fehler beim Abrufen der Webhook-URL: ${response.statusText}`);
-    }
-    const webhookUrl = await response.text(); // Webhook-URL als Text
-    return webhookUrl.trim();
-  } catch (error) {
-    console.error('Fehler beim Abrufen der Webhook-URL:', error);
-    return null;
-  }
-}
-
-async function sendFeedbackToDiscord(webhookUrl, username, feedback, rating) {
+async function sendFeedbackToServer(username, feedback, rating) {
   try {
     const payload = {
       username: username,
-      content: `Feedback: ${feedback}\nStars: ${rating}`,
+      feedback: feedback,
+      rating: rating,
     };
 
-    console.log('Payload:', payload);
-
-    const response = await fetch(webhookUrl, {
+    const response = await fetch('/api/submit-feedback', { // Endpoint deines Servers
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,11 +19,12 @@ async function sendFeedbackToDiscord(webhookUrl, username, feedback, rating) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`Fehler beim Senden des Feedbacks: ${errorText}`);
+      throw new Error(`Server error: ${errorText}`);
     }
+
     return true;
   } catch (error) {
-    console.error('Fehler beim Senden des Feedbacks:', error);
+    console.error('Error sending feedback:', error);
     return false;
   }
 }
@@ -58,14 +42,13 @@ feedbackForm.addEventListener('submit', async (event) => {
     return;
   }
 
-  const webhookUrl = await getWebhookUrl();
-  if (!webhookUrl) {
-    responseMessage.textContent = "Error: Could not fetch Webhook Link.";
+  if (feedback.length < 10 || feedback.length > 500) {
+    responseMessage.textContent = "Feedback must be between 10 and 500 characters.";
     responseMessage.style.color = "red";
     return;
   }
 
-  const success = await sendFeedbackToDiscord(webhookUrl, username, feedback, rating);
+  const success = await sendFeedbackToServer(username, feedback, rating);
   if (success) {
     responseMessage.textContent = "Feedback submitted! Thanks.";
     responseMessage.style.color = "green";

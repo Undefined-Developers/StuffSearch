@@ -84,6 +84,15 @@ body::before {
   background-color: rgba(0,0,0,0.7); 
   width: 70%;
 }
+/*@media (max-width: 767px){
+  nav-links-index{
+    width: 100%;
+    width: max-content;
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}*/
 .nav-links-index span{
   color: #ffffff;
   padding: 5px;

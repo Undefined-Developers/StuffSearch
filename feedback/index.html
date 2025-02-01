@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/style.css?<?php echo(time());?>">
+  <!--<link rel="stylesheet" href="/css/inputs.scss?<?php echo(time());?>">
+  <link rel="stylesheet" href="/css/feedback.css?<?php echo(time());?>">-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send feedback</title>
+
+</head>
+<body>
+    <div class="content">  
+        <div class="nav-links-index">
+  <h1>Feedback Page</h1>
+  <div class="iframe-container">
+    <iframe src="https://cloud.stuffmaker.org/apps/forms/embed/Ka4RcmfkPep6SY2oD7RmoiK9" width="80%" height="600px" frameborder="0"></iframe> 
+ 
+    <p class="mobile-text">The Feedback Form is currently unavailable on mobile devices.</p>
+    <a href="/">
+        <button class="button_footer">Back to home
+        </button>
+        </a>
+</div>
+</div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+.iframe-container iframe {
+    display: none;
+}
+.mobile-text {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+}
+}
+
+@media (min-width: 769px) {
+.mobile-text {
+    display: none;
+}
+}
+</style>
+</body>
+</html>
