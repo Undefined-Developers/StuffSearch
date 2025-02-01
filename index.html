@@ -82,6 +82,48 @@
        <a href="/feedback" class="social-icon" data-tooltip="Feedback">
             <img src="/images/feedback.png" style="width: 30px; height: 30px; margin-top: 10px;" alt="Feedback">
         </a>
+<script src="/js/detect.js"></script>
+<style>
+.troubleshoot-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(0, 0, 0);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+@media (min-width: 768px) { 
+  .troubleshoot-popup {
+    top: 100px; 
+    transform: translateX(-50%); 
+  }
+}
+
+.troubleshoot-popup img {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.troubleshoot-close-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #ff4d4d;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.troubleshoot-close-button:hover {
+  background: #cc0000;
+}
+</style>
         <script src="/js/version.js">
 
         </script>
