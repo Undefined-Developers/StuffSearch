@@ -26,20 +26,24 @@ document.addEventListener("DOMContentLoaded", async function () {
             const popup = document.createElement("div");
             popup.className = "troubleshoot-popup";
             popup.style.position = "fixed";
-            popup.style.top = "20%";
+            popup.style.top = "15%";
             popup.style.left = "50%";
             popup.style.transform = "translate(-50%, 0)";
             popup.style.background = "black";
-            popup.style.padding = "20px";
-            popup.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+            popup.style.padding = "30px";
+            popup.style.width = window.innerWidth <= 768 ? "80%" : "50%";
+            popup.style.maxWidth = "600px";
+            popup.style.boxShadow = "0 0 15px rgba(0,0,0,0.5)";
             popup.style.zIndex = "1000";
             popup.style.borderRadius = "10px";
 
             const text = document.createElement("p");
-            text.textContent = "Looks like you are using the brave browser. If you experience any issues please try turning off brave shields";
+            text.textContent = "Looks like you are using the brave browser. Please disable brave shields if you experience any issues";
+            text.style.color = "#d9534f";
 
             const gif = document.createElement("img");
-            gif.src = "/images/troubleshoot/brave.gif";
+            gif.src = window.innerWidth <= 768 ? "/images/troubleshoot/mobile.gif" : "/images/troubleshoot/desktop.gif";
+            gif.loading = "lazy";
             gif.style.width = "100%";
             gif.style.marginTop = "10px";
 

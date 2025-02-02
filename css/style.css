@@ -497,13 +497,9 @@ footer a.social-icon:hover::after {
 }
 .title.h1.c1 {
   color: rgb(30, 255, 0);
-  margin: 0;
-  padding: 0;
 }
 .title.h1.c2 {
   color: rgb(255, 50, 50);
-  margin: 0;
-  padding: 0;
 }
 @media screen and (max-width: 768px) {
   .hide-on-mobile {
