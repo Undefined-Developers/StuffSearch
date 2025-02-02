@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             text.style.color = "#d9534f";
 
             const gif = document.createElement("img");
-            gif.src = window.innerWidth <= 768 ? "/images/troubleshoot/mobile.gif" : "/images/troubleshoot/desktop.gif";
+            gif.src = window.innerWidth <= 768 ? "/assets/troubleshoot/mobile.gif" : "/assets/troubleshoot/desktop.gif";
             gif.loading = "lazy";
             gif.style.width = "100%";
             gif.style.marginTop = "10px";
