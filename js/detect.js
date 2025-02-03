@@ -38,8 +38,22 @@ document.addEventListener("DOMContentLoaded", async function () {
             popup.style.borderRadius = "10px";
 
             const text = document.createElement("p");
-            text.textContent = "Looks like you are using the brave browser. Please disable brave shields if you experience any issues";
+            text.textContent = "Looks like you are using the brave browser. Please disable brave shields if you experience any issues.";
             text.style.color = "#d9534f";
+            
+            const linkButton = document.createElement("a");
+            linkButton.href = "/brave-troubleshoot";
+            linkButton.target = "_blank";
+            linkButton.textContent = "Learn more";
+            linkButton.className = "troubleshoot-link-button";
+            linkButton.style.display = "block";
+            linkButton.style.marginTop = "10px";
+            linkButton.style.textAlign = "center";
+            linkButton.style.background = "#007bff";
+            linkButton.style.color = "white";
+            linkButton.style.padding = "10px";
+            linkButton.style.borderRadius = "5px";
+            linkButton.style.textDecoration = "none";
 
             const gif = document.createElement("img");
             gif.src = window.innerWidth <= 768 ? "/assets/troubleshoot/mobile.gif" : "/assets/troubleshoot/desktop.gif";
@@ -56,6 +70,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
 
             popup.appendChild(text);
+            popup.appendChild(linkButton);
             popup.appendChild(gif);
             popup.appendChild(closeButton);
             document.body.appendChild(popup);
