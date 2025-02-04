@@ -74,15 +74,21 @@ function copyShareLink() {
     const selectedEngine = select.value;
 
     if (searchQuery) {
-        const shareLink = `https://search.stuffmaker.org?search=${searchQuery}&engine=${selectedEngine}`;
+        const shareLink = `https://search.fwh.is?search=${searchQuery}&engine=${selectedEngine}`;
         navigator.clipboard.writeText(shareLink).then(() => {
-            alert("Link copied to clipboard. You can now paste to share.");
+            const messageElement = document.getElementById("message");
+            messageElement.textContent = "Link copied to clipboard. You can now paste to share.";
+            messageElement.style.color = "green";
         }).catch(err => {
             console.error('Failed to copy: ', err);
-            alert("Failed to copy link.");
+            const messageElement = document.getElementById("message");
+            messageElement.textContent = "Failed to copy link.";
+            messageElement.style.color = "red";
         });
     } else {
-        alert("Please enter a search query before sharing.");
+        const messageElement = document.getElementById("message");
+        messageElement.textContent = "Please enter a search query before sharing.";
+        messageElement.style.color = "red";
     }
 }
 
