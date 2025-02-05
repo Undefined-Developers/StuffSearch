@@ -10,7 +10,7 @@
 body {
   background: rgba(30, 30, 30, 0.5); 
   backdrop-filter: blur(8px); 
-  background-image: url("/images/2677516.jpg");
+  background-image: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
