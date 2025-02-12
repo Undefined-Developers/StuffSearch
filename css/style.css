@@ -60,7 +60,7 @@ body::before {
 
 @media (max-width: 1000px){
     body{
-        background-image: url("/images/2677516.jpg");
+        background-image: url("/images/background.jpg");
     }
 }
 

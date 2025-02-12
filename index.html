@@ -48,11 +48,26 @@
             opacity: 0;
             visibility: hidden;
         }
-       /* .background {
-            width: 100vw;
-            height: 100vh;
-            background: url('bg.jpg') no-repeat center center/cover;
-        }*/
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
   </style>
 </head>
 <body>
@@ -92,9 +107,68 @@
         <button class="button_search" id="search_button">
           <i class="ai-search"></i>
       </button>
-        <button type="button" class="button_share" onclick="copyShareLink()">
-          <i class="ai-share-box"></i>
-        </button>
+
+<!-- !!Coming soon!! 
+      <script>
+         async function copyShareLink() {
+            let query = document.getElementById("query_placeholder").value;
+            if (!query) {
+                alert("Bitte eine Suchanfrage eingeben.");
+                return;
+            }
+            
+            let originalLink = `https://search.stuffmaker.org/?q=${encodeURIComponent(query)}`;
+            
+            try {
+                let response = await fetch("https://share.toiletcleaner.eu/index.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `url=${encodeURIComponent(originalLink)}`
+                });
+                
+                if (!response.ok) {
+                    let errorText = await response.text();
+                    throw new Error(`Server-Fehler: ${errorText}`);
+                }
+                
+                let shortLink = await response.text();
+                showPopup(originalLink, shortLink);
+            } catch (error) {
+                console.error("Fetch-Fehler:", error);
+                alert("Fehler beim Abrufen des Shortlinks. Details in der Konsole.");
+            }
+        }
+        
+        function showPopup(originalLink, shortLink) {
+            let overlay = document.createElement("div");
+            overlay.className = "popup-overlay";
+            
+            let popup = document.createElement("div");
+            popup.className = "popup";
+            popup.innerHTML = `
+                <p>Original Link:</p>
+                <input type="text" value="${originalLink}" readonly style="width: 100%;">
+                <p>Gekürzter Link:</p>
+                <input type="text" value="${shortLink}" readonly style="width: 100%;">
+                <button onclick="window.location.href='${shortLink}&go=true'">Direkt weiterleiten</button>
+                <button onclick="navigator.clipboard.writeText('${shortLink}')">Gekürzten Link kopieren</button>
+                <button onclick="navigator.clipboard.writeText('${originalLink}')">Original Link kopieren</button>
+                <button onclick="document.body.removeChild(popup); document.body.removeChild(overlay);">Schließen</button>
+            `;
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+        }
+        if (file_put_contents($databaseFile, $entry, FILE_APPEND | LOCK_EX) === false) {
+    die("Fehler beim Speichern in db.sql");
+}
+
+    </script>-->
+
+
+    <button type="button" class="button_share" onclick="copyShareLink()">
+        <i class="ai-share-box"></i>
+    </button>
         <p id="message"></p>
     </form>
     <script src="https://unpkg.com/akar-icons-fonts"></script>
