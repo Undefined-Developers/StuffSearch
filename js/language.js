@@ -16,8 +16,8 @@
               
                 /* (REMOVED)if (data.title) document.getElementById('title').textContent = data.title;*/
                 if (data.description) document.getElementById('description').textContent = data.description;
-                if (data.feedback_footer_txt) {
-                  document.getElementById('feedback_footer_txt').innerHTML = data.feedback_footer_txt;
+         //       if (data.feedback_footer_txt) {
+        //          document.getElementById('feedback_footer_txt').innerHTML = data.feedback_footer_txt;
                   if (data.search_engine_label) {
                     document.getElementById('search_engine_label').textContent = data.search_engine_label;
                   if (data.query_placeholder) {
@@ -37,12 +37,12 @@
                     } 
                 }
                   
-      }
+      //}
     }
   }           
 }
             } catch (error) {
-                console.warn("Cannot load language:", error);
+                console.log("Cannot load language:", error);
             }
         }
         loadLanguage();

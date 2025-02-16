@@ -78,15 +78,14 @@ body::before {
   background-color: rgba(0,0,0,0.7); 
   width: 70%;
 }
-/*@media (max-width: 767px){
-  nav-links-index{
-    width: 100%;
-    width: max-content;
-    padding: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+@media (max-width: 800px){
+  .version-info{
+    display: none;
   }
-}*/
+  .spacer{
+    display: none;
+  }
+}
 .nav-links-index span{
   color: #ffffff;
   padding: 5px;
@@ -505,4 +504,21 @@ footer a.social-icon:hover::after {
   .hide-on-mobile {
     display: none;
   }
+}
+
+
+.privacy-text {
+  color: #ffffff;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 20px;
+}
+@media screen and (max-width: 800px) {
+  .privacy-text {
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
 }

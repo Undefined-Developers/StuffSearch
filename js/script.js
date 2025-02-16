@@ -1,7 +1,7 @@
-function loadDefaultSearchEngine() {
-    const savedEngine = localStorage.getItem("defaultSearchEngine") || "brave"; 
-    document.getElementById("searchEngineSelect").value = savedEngine;
-    updateSearchFormAction(savedEngine);
+//function loadDefaultSearchEngine() {
+  //  const savedEngine = localStorage.getItem("defaultSearchEngine") || "brave"; 
+    //document.getElementById("searchEngineSelect").value = savedEngine;
+    //updateSearchFormAction(savedEngine);
 
     function updateSearchFormAction(engine) {
         const searchForm = document.getElementById("searchForm");
@@ -21,8 +21,8 @@ function loadDefaultSearchEngine() {
         updateSearchFormAction(selectedEngine);
     }
 
-    window.addEventListener("DOMContentLoaded", loadDefaultSearchEngine);
-}
+    //window.addEventListener("DOMContentLoaded", loadDefaultSearchEngine);
+//}
 
 const searchEngines = {
     "brave": "https://search.brave.com/search",
@@ -99,4 +99,4 @@ function updateSearchAction() {
     form.action = engineUrl;
 }
 
-window.addEventListener("DOMContentLoaded", loadDefaultSearchEngine);
+//window.addEventListener("DOMContentLoaded", loadDefaultSearchEngine);
