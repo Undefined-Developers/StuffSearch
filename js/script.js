@@ -100,3 +100,10 @@ function updateSearchAction() {
 }
 
 //window.addEventListener("DOMContentLoaded", loadDefaultSearchEngine);
+
+
+const bgImage = new Image();
+bgImage.src = '/images/background.jpg';
+bgImage.onload = () => {
+    document.body.classList.add("loaded");
+};

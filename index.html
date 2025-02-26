@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/style.css?<?php echo(time());?>">
     <link rel="stylesheet" href="/css/inputs.scss?<?php echo(time());?>">
+    <link rel="stylesheet" href="/assets/css/indexdata.css?<?php echo(time());?>">
     <link rel="shortcut icon" href="/images/search.png" type="image/x-icon">
     <title>StuffSearch</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
@@ -71,15 +72,17 @@
   </style>
 </head>
 <body>
-  <script>
-    const bgImage = new Image();
-    bgImage.src = '/images/background.jpg';
-    bgImage.onload = () => {
-        document.body.classList.add("loaded");
-    };
-</script>
   <div id="preloader">
     <div class="spinner"></div>
+</div>
+<div class="background-container">
+  <img id="background-image" src="/images/desktop.png" alt="Initial Background Image">
+  <video id="background-video"autoplay muted>
+      <source src="https://cdn.rizzmail.wtf/u/W6ZEpx5DrX3TGJ7.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+  <script src="/js/vidpreload.js"></script>
+  <img id="final-background" src="/images/desktop.png" alt="Final Background Image">
 </div>
     <div class="content">
 <div class="nav-links-index">
@@ -249,6 +252,6 @@
 <a href="/privacy" class="privacy-text" target="_blank">Privacy Policy</a>
 </div>
 </div>
-
+<script>console.log('%cSite sucessfully loaded', 'color: gray; text-decoration: cursive; font-size: 20px;');</script>
 </body>
 </html>
